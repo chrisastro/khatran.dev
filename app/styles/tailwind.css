@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, :before, :after {
+    @apply box-border;
+  }
+
+  html,
+  body {
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-2xl mx-auto;
+  }
+
+  .blog-container {
+    @apply grid gap-2 relative;
+    grid-template-columns: 300px 1fr;
+  }
+}

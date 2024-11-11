@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import {
   Links,
   Meta,
@@ -5,9 +6,22 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 
-import "./tailwind.css";
+import "./styles/tailwind.css";
+import { NavLink } from "react-router-dom";
+
+export const meta: MetaFunction = () => {
+  return [
+    {
+      title: "Kha Trần",
+    },
+    {
+      name: "description",
+      content: "Software Engineer who likes to build things",
+    },
+  ];
+};
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -18,11 +32,15 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap",
   },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -41,5 +59,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <header>
+        <div className="container pt-3 pb-5">
+          <div className="w-full flex flex-col items-center">
+            <div className="mt-4 flex flex-col gap-1 text-center">
+              <NavLink to={"/"}>
+                <h1 className="font-serif text-4xl font-black">
+                  Kha Quang Trần
+                </h1>
+              </NavLink>
+              <div className="bg-[#F4BF77] px-2 font-bold">
+                <p className="text-sm tracking-wider uppercase">
+                  Software Engineer
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <Outlet />
+    </>
+  );
 }
