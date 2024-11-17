@@ -2,11 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+	@apply box-border;
+}
+
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+	@apply font-synonym bg-white;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+@layer components {
+	.container {
+		@apply max-w-5xl mx-auto;
+	}
+
+	.label {
+		@apply font-amulya font-bold tracking-tighter bg-lemonade w-max px-2;
+	}
+
+	#min-read:before {
+		content: "";
+		@apply w-1 h-1 mx-2 bg-black rounded-full;
+	}
 }
